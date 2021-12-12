@@ -1,0 +1,47 @@
+{   
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Pokreni i debaguj.",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Lepo stampanje u debag.",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "Kompajl",
+            "miDebuggerPath": "/usr/bin/gdb"
+        },
+        {
+            "name": "Pokreni i debaguj. Zastava za niti.",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Lepo stampanje u debag.",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "Kompajl niti",
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ]
+}
