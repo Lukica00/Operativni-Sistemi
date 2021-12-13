@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "semaphore.h": "c",
-        "condition_variable": "c",
-        "mutex": "c"
-    }
-}
