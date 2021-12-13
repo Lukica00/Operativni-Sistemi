@@ -38,7 +38,7 @@ void *Nit1(void *arg)
         strcat(novaRec, " ");
         strcat(novaRec, reci[j]);
     }
-
+    free(reci);
     return (void *)novaRec;
 }
 void *Nit2(void *arg)
@@ -54,6 +54,7 @@ void *Nit2(void *arg)
     }
     recenica[0] = toupper(recenica[0]);
     puts(recenica);
+    free(recenicaVoid);
 }
 
 int main()
@@ -63,5 +64,6 @@ int main()
     pthread_create(&nit1, NULL, Nit1, (void *)recenica);
     pthread_create(&nit2, NULL, Nit2, NULL);
     pthread_join(nit2, NULL);
+    free(recenica);
     printf("KRAJ");
 }
