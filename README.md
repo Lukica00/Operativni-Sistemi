@@ -11,7 +11,7 @@ Pored rešenja nalazi se i folder *.vscode* koji sadrži podešavanja da se uz p
 
 3. Korišćenjem programskog jezika C napisati Linux program threadovi u kome dve niti u tekstualnu datoteku upisuju redom cele brojeve od 1 do 20, pri čemu je svaki broj u zasebnom redu. Prva nit upisuje samo neparne, a druga nit samo parne brojeve. Sinhronizacijom niti obezbediti da se brojevi upisuju u datoteku pravilnim redosledom, 1 2 3 4 5 itd. (Isti kao 1.1).
 
-
+4. Korišćenjem programskog jezika C napisati Linux progam koji u glavnoj niti od korisnika očekuje da unese ceo broj. Zatim startuje drugu nit, prosleđuje joj uneti broj, a druga nit odbrojava (i štampa na ekranu brojeve kako odbrojava) od 0 do unetog broja sa pauzom od 3 sekunde između dva uzastopna broja. Zatim u glavnoj niti korisnik ponovo unosi ceo broj i ovaj proces odbrojavanja i unosa broja se ponavlja sve dok korisnik ne unese „KRAJ“. 
 
 ## 2. Procesi
 1. Korišćenjem programskog jezika C kreirati program koji se deli u dva Linux procesa koji generišu slučajne celobrojne vrednosti i upisuju ih u datoteku čiji se naziv prosleđuje kao argument komandne linije glavnog procesa. Prvi proces generiše niz od tri slučajne pozitivne celobrojne vrednosti i upisuje ih u datoteku. Nakon toga drugi proces generiše dve slučajne negativne celobrojne vrednosti i upisuje ih u istu datoteku. Postupak se ponavlja N puta (naizmenično prvi pa drugi proces). Vrednost N se takođe prosleđuje kao argument komandne linije. Sinhronizovati rad procesa korišćenjem semafora.
