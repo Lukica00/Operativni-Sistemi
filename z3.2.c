@@ -16,11 +16,11 @@ int main()
     {
         close(pip1[0]);
         close(pip2[0]);
-        int niz[20];
+        char niz[20];
         int s = 0;
         for (int i = 0; i < 20; i++)
         {
-            niz[i] = rand() % 100;
+            niz[i] = rand() % 75 + 48;
             s += niz[i];
         }
         printf("%d\n", s);
@@ -28,22 +28,22 @@ int main()
         {
             int a = 0;
             int b = 1;
-            write(pip1[1], &b, sizeof(int));
-            write(pip2[1], &a, sizeof(int));
-            for (int i = 0; i < 20; i++)
+            write(pip1[1], &niz[0], sizeof(char));
+            write(pip2[1], 0, sizeof(char));
+            for (int i = 1; i < 20; i++)
             {
-                write(pip1[1], &niz[i], sizeof(int));
+                write(pip1[1], &niz[i], sizeof(char));
             }
         }
         else
         {
             int a = 0;
             int b = 1;
-            write(pip2[1], &b, sizeof(int));
-            write(pip1[1], &a, sizeof(int));
-            for (int i = 0; i < 20; i++)
+            write(pip2[1], &niz[0], sizeof(char));
+            write(pip1[1], 0, sizeof(char));
+            for (int i = 1; i < 20; i++)
             {
-                write(pip2[1], &niz[i], sizeof(int));
+                write(pip2[1], &niz[i], sizeof(char));
             }
         }
         close(pip1[1]);
@@ -57,15 +57,16 @@ int main()
         {
             close(pip2[0]);
             int s = 0;
-            int niz[20];
-            int tmp;
-            read(pip2[0], &tmp,sizeof(int));
-            if (tmp != 0)
-            {                
-                FILE *f = fopen("Brojevi.txt", "w");
-                for (int i = 0; i < 20; i++)
+            char niz[20];
+            read(pip1[0], &niz[0], sizeof(char));
+            if (niz[0] != 0)
+            {
+                FILE *f = fopen("Karakteri.txt", "w");
+                read(pip1[0], &niz[0], sizeof(char));
+                fprintf(f, "%d ", niz[0]);
+                for (int i = 1; i < 20; i++)
                 {
-                    read(pip1[0],&niz[i],sizeof(int));
+                    read(pip1[0], &niz[i], sizeof(char));
                     fprintf(f, "%d ", niz[i]);
                     fflush(f);
                 }
@@ -77,14 +78,15 @@ int main()
         {
             close(pip1[0]);
             int s = 0;
-            int niz[20];
-            int tmp;
-            read(pip2[0], &tmp, sizeof(int));
-            if (tmp != 0)
+            char niz[20];
+            read(pip2[0], &niz[0], sizeof(char));
+            if (niz[0] != 0)
             {
-                for (int i = 0; i < 20; i++)
+                printf("%d \n", niz[0]);
+                fflush(stdout);
+                for (int i = 1; i < 20; i++)
                 {
-                    read(pip2[0],&niz[i],sizeof(int));
+                    read(pip2[0], &niz[i], sizeof(char));
                     printf("%d \n", niz[i]);
                     fflush(stdout);
                 }
