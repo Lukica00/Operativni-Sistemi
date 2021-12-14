@@ -28,5 +28,6 @@ int main(int argv, char* argc[]){
                 }
             }
         }
+        close(pip[0]);
     }
 }

@@ -14,11 +14,10 @@ Pored rešenja nalazi se i folder *.vscode* koji sadrži podešavanja da se uz p
 
 
 ## 2. Procesi
-> **Predavači predmeta na prezentaciji o semaforima:"*Koristićemo ih isključivo za sinhronizaciju niti.*"**  
-> **Takođe predavači predmeta: zadatak 2.1.**  
-
 1. Korišćenjem programskog jezika C kreirati program koji se deli u dva Linux procesa koji generišu slučajne celobrojne vrednosti i upisuju ih u datoteku čiji se naziv prosleđuje kao argument komandne linije glavnog procesa. Prvi proces generiše niz od tri slučajne pozitivne celobrojne vrednosti i upisuje ih u datoteku. Nakon toga drugi proces generiše dve slučajne negativne celobrojne vrednosti i upisuje ih u istu datoteku. Postupak se ponavlja N puta (naizmenično prvi pa drugi proces). Vrednost N se takođe prosleđuje kao argument komandne linije. Sinhronizovati rad procesa korišćenjem semafora.
-(Citat odozgo me nije sprečilo da nađem rešenje ovog zadatka. Potrebno je koristiti *imenovane* semafore. Razlog za njihovu upotrebu je što se prilikom kreiranja procesa pravi "nova" memorija za novi proces i promena semafora se ne vide u oba. Rešenje je korišćenje deljenog memorijskog prostora (nije gradivo za prvi kolokvijum) ili imenovanih semafora. Kod ovih semafora što sam uočio da je obavezno da se koristi `unlink` jer će inače ostati ime semfora negde i gubiće se program pri narednim pokretanjima.)
+(Nisam znao da postoje *System V* semafori pa sam rešio uz pomoć *Posix imenovanih* semafora. Razlog za njihovu upotrebu, umesto neimenovanih, je što se prilikom kreiranja procesa pravi "nova" memorija za novi proces i promena semafora se ne vide u oba. Kod ovih semafora što sam uočio da je obavezno da se koristi `unlink` jer će inače ostati ime semfora negde i gubiće se program pri narednim pokretanjima.)
+
+2. Isti zadatak kao i prvi samo rešen kako je zamišljeno, uz pomoć System V.
 
 ## 3. Datovodi
 1. Korišćenjem programskog jezika C kreirati tri Linux procesa koja komuniciraju korišćenjem datavoda. Prvi proces generiše niz proizvoljnih celih brojeva (dužina niza je fiksna i iznosi 20 brojeva) a zatim računa zbir svih tako generisanih brojeva. Ukoliko je dobijeni zbir paran broj, generisani niz brojeva se korišćenjem datavoda šalje drugom procesu koji ih upisuje u datoteku BROJEVI.txt. Ukoliko je dobijeni zbir neparan broj, generisani niz brojeva se korišćenjem datavoda šalje trećem procesu koji ih štampa na standardnom izlazu.
@@ -28,4 +27,4 @@ Prvi proces generiše niz proizvoljnih karaktera (dužina niza je fiksna i iznos
 
 ## 4. Ispitni zadaci
 1. Jun 2021. Prvi zadatak - Korišćenjem programskog jezika C kreirati Linux program u kome korisnik sa tastature unosi rečenicu. Glavni program zatim kreira dve niti. Prva nit sortira reči u unetoj rečenici u leksikografski opadajućem redosledu, a po završetku sortiranja druga nit na ekranu štampa tu rečenicu tako da samo prva reč počinje velikim slovom, a sve ostale reči malim. Po završetku rada ove dve niti glavni program treba da odštampa: "KRAJ".
-2. Jun 2021. Drugi zadatak - Korišćenjem programskog jezika C kreirati Linux program koji oponaša program more. Ovaj program očekuje dva argumenta komandne linije. Prvi argument je naziv programa koji treba da startuje i čiji izlaz da prikazuje ekran po ekran. Drugi argument N je broj linija koje prikazuje na ekranu posle čega prikazuje poruku - MORE - , čeka pritisak bilo kog tastera i nakon toga prikazuje narednih N linija itd...
+2. Jun 2021. Drugi zadatak - Korišćenjem programskog jezika C kreirati Linux program koji oponaša program more. Ovaj program očekuje dva argumenta komandne linije. Prvi argument je naziv programa koji treba da startuje i čiji izlaz da prikazuje ekran po ekran. Drugi argument N je broj linija koje prikazuje na ekranu posle čega prikazuje poruku - MORE - , čeka pritisak bilo kog tastera i nakon toga prikazuje narednih N linija itd... (Kompajlirati z4.2.pom za prikaz ili koristiti bilo koji drugi program.)
