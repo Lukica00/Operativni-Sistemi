@@ -13,6 +13,7 @@ void *Nit(void *arg)
     pthread_mutex_lock(&mutex);
     pthread_cond_wait(&uslov1, &mutex);
     niz[rand() % 10] += rand() % 21 - 10;
+    sleep(1);
     pthread_cond_signal(&uslov2);
     pthread_mutex_unlock(&mutex);
 }
@@ -22,7 +23,6 @@ void *Stampa(void *arg)
     for (int j = 0; j < 4; j++)
     {
         pthread_mutex_lock(&mutex);
-        sleep(1);
         pthread_cond_signal(&uslov1);
         pthread_cond_wait(&uslov2, &mutex);
         int s = 0;
@@ -30,7 +30,7 @@ void *Stampa(void *arg)
         {
             s += niz[i];
         }
-        // if (s % 2 == 0)
+        if (s % 2 == 0)
         for (int i = 0; i < 10; i++)
         {
             printf("%d ", niz[i]);
@@ -50,7 +50,6 @@ int main()
     }
     pthread_create(&nit[4], NULL, Stampa, NULL);
     sleep(1);
-    pthread_cond_signal(&uslov2);
     for (int i = 0; i < 5; i++)
     {
         pthread_join(nit[i], NULL);
