@@ -1,0 +1,50 @@
+{
+	//snippet za brzo kucanje main i fork
+	"Main+fork": {
+		"scope": "c",
+		"prefix": "main-fork",
+		"body": [
+			"int main(int argc, char* argv[])",
+			"{",
+			"\tif(fork()==0)",
+			"\t{",
+			"\t}",
+			"\telse",
+			"\t{",
+			"\t}",
+			"}"
+		],
+		"description": "Main i fork"
+	},
+	"Fork": {
+		"scope": "c",
+		"prefix": "fork",
+		"body": [
+			"if(fork()==0)",
+			"{",
+			"}",
+			"else",
+			"{",
+			"}"
+		],
+		"description": "Samo fork"
+	},
+	"Include all": {
+		"scope": "c",
+		"prefix": "include all",
+		"body": [
+			"#include <stdio.h>",
+			"#include <pthread.h>",
+			"#include <semaphore.h>",
+			"#include <string.h>",
+			"#include <unistd.h>",
+			"#include <sys/wait.h>",
+			"#include <stdlib.h>",
+			"#include <fcntl.h>",
+			"#include <sys/types.h>",
+			"#include <sys/ipc.h>",
+			"#include <sys/sem.h>"
+		],
+		"description": "Sve mi inkludaj"
+	}
+}
