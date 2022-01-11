@@ -19,10 +19,6 @@ void ctrlc(int s)
     {
         exit(0);
     }
-    else
-    {
-        p = 0;
-    }
 }
 void ctrlz(int s)
 {
