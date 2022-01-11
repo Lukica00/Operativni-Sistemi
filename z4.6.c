@@ -8,6 +8,7 @@ int q = 0, i = 0, j = 0;
 void roditelj(int sig)
 {
     signal(SIGUSR2, roditelj);
+    printf("PRIMIO\n");
     if (q == 1)
     {
         q = 0;
@@ -49,7 +50,7 @@ void dete1(int sig)
         fprintf(f, "%d", rand() % 10);
     fclose(f);
 
-    kill(pid0, SIGUSR2);
+    printf("DETE1:%d\n", kill(pid0, SIGUSR2));
 }
 void dete2(int sig)
 {
@@ -58,9 +59,8 @@ void dete2(int sig)
     for (int i = 0; i < 1000; i++)
         fprintf(f, "%c", rand() % 25 + 97);
     fclose(f);
-    kill(pid0, SIGUSR2);
+    printf("DETE2:%d\n", kill(pid0, SIGUSR2));
 }
-
 void alarmantno(int sig)
 {
     signal(SIGUSR2, roditelj);
