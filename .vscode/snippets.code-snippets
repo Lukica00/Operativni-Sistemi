@@ -1,6 +1,6 @@
 {
 	//snippet za brzo kucanje main i fork
-	"Main+fork": {
+	"Main i fork": {
 		"scope": "c",
 		"prefix": "main-fork",
 		"body": [
@@ -43,8 +43,50 @@
 			"#include <fcntl.h>",
 			"#include <sys/types.h>",
 			"#include <sys/ipc.h>",
-			"#include <sys/sem.h>"
+			"#include <sys/sem.h>",
+			"#include <sys/shm.h>",
+			"#include <dirent.h>",
+			"#include <sys/stat.h>"
 		],
 		"description": "Sve mi inkludaj"
+	},
+	"System V dva semafora otvori": {
+		"scope": "c",
+		"prefix": "sysv open",
+		"body": [
+			"int s1, s2;",
+			"struct sembuf sem_lock = {0, -1, 0};",
+			"struct sembuf sem_unlock = { 0, 1, 0};",
+			"s1 = semget((__key_t)100, 1, 0666 | IPC_CREAT);",
+			"s2 = semget((__key_t)200, 1, 0666 | IPC_CREAT);",
+			"semctl(s1, 0, SETVAL, 1);",
+			"semctl(s2, 0, SETVAL, 0);"
+		],
+		"description": "Dva semafora rade"
+	},
+	"System V dva semafora zatvori": {
+		"scope": "c",
+		"prefix": "sysv close",
+		"body": [
+			"semctl(s1, 0, IPC_RMID, 0);",
+			"semctl(s2, 0, IPC_RMID, 0);"
+		],
+		"description": "Dva semafora ne rade"
+	},
+	"System V otkljucaj": {
+		"scope": "c",
+		"prefix": "sysv unlock",
+		"body": [
+			"semop(s$1, &sem_unlock, 1);$0"
+		],
+		"description": "Otkljucaj semafor"
+	},
+	"System V zakljucaj": {
+		"scope": "c",
+		"prefix": "sysv lock",
+		"body": [
+			"semop(s$1, &sem_lock, 1);$0"
+		],
+		"description": "Zakljucaj semafor"
 	}
 }
